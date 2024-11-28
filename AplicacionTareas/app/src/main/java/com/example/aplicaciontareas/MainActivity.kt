@@ -12,14 +12,22 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager
 
 class MainActivity : AppCompatActivity() {
 
-    private val categorias= listOf(
+    private val categorias = listOf(
         TareasCategorias.Negocios,
         TareasCategorias.Personal,
         TareasCategorias.Otros
     )
 
+    private val tareas = mutableListOf(
+        Tarea("Prueba negocio", TareasCategorias.Negocios),
+        Tarea("Prueba otros", TareasCategorias.Otros),
+        Tarea("Prueba personal", TareasCategorias.Personal)
+    )
+
     private lateinit var rvCategorias: RecyclerView
     private lateinit var categoriasAdapter: CategoriasAdapter
+    private lateinit var rvTareas: RecyclerView
+    private lateinit var tareasAdapter: TareasAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,12 +46,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        categoriasAdapter= CategoriasAdapter(categorias)
-        rvCategorias.layoutManager=LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        rvCategorias.adapter=categoriasAdapter
+        categoriasAdapter = CategoriasAdapter(categorias)
+        rvCategorias.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rvCategorias.adapter = categoriasAdapter
+        tareasAdapter = TareasAdapter(tareas)
+        rvTareas.layoutManager = LinearLayoutManager(this)
+        rvTareas.adapter = tareasAdapter
     }
 
     private fun initComponent() {
-        rvCategorias=findViewById(R.id.rvCategorias)
+        rvCategorias = findViewById(R.id.rvCategorias)
+        rvTareas = findViewById(R.id.rvTareas)
     }
 }
