@@ -1,6 +1,7 @@
 package com.example.aplicaciontareas
 
 import android.content.res.ColorStateList
+import android.graphics.Paint
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
@@ -14,6 +15,15 @@ class TareasViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun render(tarea: Tarea) {
         tvTarea.text = tarea.nombre
+
+        if (tarea.isSelected){
+            //Para tachar el texto
+            tvTarea.paintFlags=tvTarea.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        }else{
+            tvTarea.paintFlags=tvTarea.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+        }
+
+        cbTarea.isChecked=tarea.isSelected
 
         val color = when (tarea.categoria) {
             TareasCategorias.Negocios -> R.color.todo_business_category

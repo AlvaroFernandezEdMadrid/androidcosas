@@ -7,4 +7,5 @@
     <string name="todo_dialogo_categoria_negocio">Negocio</string>
     <string name="todo_dialogo_categoria_personal">Personal</string>
     <string name="todo_dialogo_categoria_other">Other</string>
+
 </resources>

@@ -11,6 +11,8 @@ class CategoriasViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun render(tareasCategorias: TareasCategorias) {
 
+
+
         when (tareasCategorias) {
             TareasCategorias.Negocios -> {
                 tvCategoriaNombre.text = "Negocio"

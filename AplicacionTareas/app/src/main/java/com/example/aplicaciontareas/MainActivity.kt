@@ -50,13 +50,22 @@ class MainActivity : AppCompatActivity() {
         rvCategorias.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rvCategorias.adapter = categoriasAdapter
-        tareasAdapter = TareasAdapter(tareas)
+        tareasAdapter = TareasAdapter(tareas){position->onItemSelected(position)}
         rvTareas.layoutManager = LinearLayoutManager(this)
         rvTareas.adapter = tareasAdapter
+    }
+
+    private fun actualizarTarea(){
+        tareasAdapter.notifyDataSetChanged()
     }
 
     private fun initComponent() {
         rvCategorias = findViewById(R.id.rvCategorias)
         rvTareas = findViewById(R.id.rvTareas)
+    }
+
+    private fun onItemSelected(position: Int) {
+        tareas[position].isSelected=!tareas[position].isSelected
+        actualizarTarea()
     }
 }
